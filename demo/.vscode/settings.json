@@ -1,0 +1,16 @@
+{
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.preview": false,
+  "editor.quickSuggestions": {
+    "other": "off",
+    "comments": "off",
+    "strings": "off"
+  },
+  "editor.fontSize": 17,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "files.autoSave": "off",
+  "vsHelper.enabled": true,
+  "vsHelper.provider": "ollama",
+  "vsHelper.groqManualOnly": true
+}

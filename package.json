@@ -1,0 +1,61 @@
+{
+  "name": "vs-helper",
+  "displayName": "VS_helper — Local Code Completion",
+  "description": "Local Ollama inline code completion with an optional, clearly labeled Groq cloud demo mode.",
+  "version": "0.3.1",
+  "publisher": "soorya-prataap-ray",
+  "license": "MIT",
+  "engines": { "vscode": "^1.95.0" },
+  "categories": ["Programming Languages", "Machine Learning"],
+  "main": "./out/extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "scripts": {
+    "compile": "tsc -p .",
+    "check": "tsc --noEmit",
+    "test": "npm run compile && node --test test/*.test.cjs",
+    "test:host": "npm run compile && node scripts/test-host.cjs",
+    "package": "npm run compile && vsce package --no-dependencies --allow-missing-repository",
+    "benchmark": "npm run compile && node benchmark/run.cjs"
+  },
+  "contributes": {
+    "commands": [
+      { "command": "vsHelper.toggle", "title": "VS_helper: Enable or Disable Completion" },
+      { "command": "vsHelper.selectModel", "title": "VS_helper: Select Model" },
+      { "command": "vsHelper.testConnection", "title": "VS_helper: Test Provider Connection" },
+      { "command": "vsHelper.selectProvider", "title": "VS_helper: Select Provider" },
+      { "command": "vsHelper.setGroqKey", "title": "VS_helper: Set Groq API Key" },
+      { "command": "vsHelper.removeGroqKey", "title": "VS_helper: Remove Groq API Key" },
+      { "command": "vsHelper.trigger", "title": "VS_helper: Trigger Inline Suggestion", "icon": "$(sparkle)" },
+      { "command": "vsHelper.settings", "title": "VS_helper: Open Settings" },
+      { "command": "vsHelper.dashboard", "title": "VS_helper: Open Local AI Dashboard" },
+      { "command": "vsHelper.demo", "title": "VS_helper: Open Demo Workspace" }
+    ],
+    "menus": { "editor/title": [{ "command": "vsHelper.trigger", "group": "navigation", "when": "resourceLangId =~ /^(python|javascript|typescript|javascriptreact|typescriptreact)$/" }] },
+    "keybindings": [{ "command": "vsHelper.trigger", "key": "ctrl+alt+enter", "mac": "cmd+alt+enter", "when": "editorTextFocus" }],
+    "configuration": {
+      "title": "VS_helper",
+      "properties": {
+        "vsHelper.provider": { "type": "string", "enum": ["ollama", "groq"], "default": "ollama", "scope": "window", "description": "Ollama runs locally. Groq is an optional cloud demo provider that sends code context to api.groq.com." },
+        "vsHelper.groqModel": { "type": "string", "default": "openai/gpt-oss-20b", "description": "Groq demo model ID. Availability and free-plan quotas depend on your Groq account." },
+        "vsHelper.groqManualOnly": { "type": "boolean", "default": true, "description": "Only send Groq requests when explicitly triggered with Ctrl+Alt+Enter, to conserve free-plan quota." },
+        "vsHelper.groqMaxTokens": { "type": "number", "default": 1024, "minimum": 128, "maximum": 4096, "description": "Groq token budget including any internal reasoning. Final insertion remains limited to 20 lines and 4000 characters." },
+        "vsHelper.enabled": { "type": "boolean", "default": true, "description": "Enable inline completion using the selected provider." },
+        "vsHelper.endpoint": { "type": "string", "default": "http://127.0.0.1:11434", "description": "Local Ollama HTTP(S) endpoint. Only localhost, 127.0.0.1 and ::1 are accepted. Redirects are rejected." },
+        "vsHelper.model": { "type": "string", "default": "qwen2.5-coder:1.5b", "description": "Installed Ollama model tag." },
+        "vsHelper.languages": { "type": "array", "items": { "type": "string" }, "default": ["python", "javascript", "typescript", "javascriptreact", "typescriptreact"], "description": "Language identifiers eligible for suggestions." },
+        "vsHelper.debounceMs": { "type": "number", "default": 350, "minimum": 0, "maximum": 5000, "description": "Typing pause before automatic inference." },
+        "vsHelper.timeoutMs": { "type": "number", "default": 60000, "minimum": 1000, "maximum": 300000, "description": "Inference deadline, including model loading." },
+        "vsHelper.contextCharacters": { "type": "number", "default": 6000, "minimum": 100, "maximum": 32000, "description": "Maximum context characters around the cursor." },
+        "vsHelper.maxTokens": { "type": "number", "default": 96, "minimum": 16, "maximum": 1024, "description": "Maximum generated tokens. Insertions are also capped at 20 lines and 4000 characters." },
+        "vsHelper.temperature": { "type": "number", "default": 0.1, "minimum": 0, "maximum": 2, "description": "Generation temperature." }
+      }
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.95.0",
+    "@vscode/test-electron": "^2.5.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.7.0"
+  }
+}

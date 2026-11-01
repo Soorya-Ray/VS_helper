@@ -1,0 +1,11 @@
+node_modules/
+out/
+.runtime/
+.vscode-test/
+.submission-build/
+submission/
+*.log
+*.env
+.env
+__pycache__/
+*.pyc

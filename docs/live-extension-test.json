@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-11-01T08:51:14.807Z",
+  "model": "qwen2.5-coder:1.5b",
+  "note": "Real Ollama inference through the Extension Host provider with insertion and functional checks, followed by the native inline trigger and commit commands. Physical keyboard input and screenshot inspection are not automated.",
+  "records": [
+    {
+      "language": "python",
+      "elapsedMs": 8974,
+      "insertion": "return a + b",
+      "source": "# Return the sum of two numbers.\ndef add(a, b):\n    return a + b",
+      "functionalCheck": "passed",
+      "provider": "real local Ollama"
+    },
+    {
+      "language": "javascript",
+      "elapsedMs": 1635,
+      "insertion": "return numbers.filter(number => number % 2 === 0);",
+      "source": "// Return only even numbers.\nfunction filterEven(numbers) {\n    return numbers.filter(number => number % 2 === 0);\n}",
+      "functionalCheck": "passed",
+      "provider": "real local Ollama"
+    },
+    {
+      "language": "typescript",
+      "elapsedMs": 1959,
+      "insertion": "return Math.max(min, Math.min(value, max));",
+      "source": "// Clamp value between min and max.\nfunction clamp(value: number, min: number, max: number): number {\n    return Math.max(min, Math.min(value, max));\n}",
+      "functionalCheck": "passed",
+      "provider": "real local Ollama"
+    },
+    {
+      "language": "python",
+      "elapsedMs": 1734,
+      "source": "# Return the sum of two numbers.\ndef add(a, b):\n    return a + b",
+      "nativeInlineTriggerAndCommit": "passed",
+      "provider": "real local Ollama"
+    }
+  ]
+}

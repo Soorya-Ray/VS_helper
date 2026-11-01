@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-11-01T08:41:00.744Z",
+  "models": [
+    {
+      "name": "qwen2.5-coder:1.5b",
+      "model": "qwen2.5-coder:1.5b",
+      "modified_at": "2026-11-01T14:09:30.2069031+05:30",
+      "size": 986062089,
+      "digest": "74dc6697e6ca0344da4d874bc7c35d73202683af3dcd0fbf521bf55865e520ea",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "1.5B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 1536,
+        "runner": "ggml"
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "insert"
+      ]
+    }
+  ],
+  "records": [
+    {
+      "id": "py-add",
+      "provider": "real local Ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "latencyMs": 277.67859999999996,
+      "raw": "     return a + b",
+      "insertion": "return a + b",
+      "source": "# Return the sum of two numbers.\ndef add(a, b):\n    return a + b",
+      "evalCount": 6,
+      "functionalCheck": "passed"
+    },
+    {
+      "id": "js-even",
+      "provider": "real local Ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "latencyMs": 628.6461000000002,
+      "raw": "return numbers.filter(number => number % 2 === 0);",
+      "insertion": "return numbers.filter(number => number % 2 === 0);",
+      "source": "// Return even numbers.\nfunction even(numbers) {\n    return numbers.filter(number => number % 2 === 0);\n}",
+      "evalCount": 14,
+      "functionalCheck": "passed"
+    },
+    {
+      "id": "ts-clamp",
+      "provider": "real local Ollama",
+      "model": "qwen2.5-coder:1.5b",
+      "latencyMs": 1080.1327,
+      "raw": "return Math.max(min, Math.min(value, max));",
+      "insertion": "return Math.max(min, Math.min(value, max));",
+      "source": "// Clamp value to min and max.\nfunction clamp(value: number, min: number, max: number): number {\n    return Math.max(min, Math.min(value, max));\n}",
+      "evalCount": 12,
+      "functionalCheck": "passed"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+node_modules/**
+src/**
+test/**
+scripts/**
+.vscode-test/**
+results/**
+benchmark/**
+*.log
+tsconfig.json
+package-lock.json
+**/*.map
+*.vsix
+*.exe
+ollama-release.json
+.vscode/**
+.runtime/**
+portable-*
