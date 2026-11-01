@@ -15,3 +15,8 @@ ollama-release.json
 .vscode/**
 .runtime/**
 portable-*
+
+docs/**
+DEMO.md
+Start-*.ps1
+Start-*.cmd

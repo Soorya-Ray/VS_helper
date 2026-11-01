@@ -60,11 +60,11 @@ $env:OLLAMA_NO_CLOUD = '1'
 ollama serve
 ```
 
-Optional Groq cloud demo mode is separate from the local project workflow.
+An optional Groq cloud provider is available alongside the local Ollama provider.
 Choose Groq with **VS_helper: Select Provider** and enter your own key through
 **VS_helper: Set Groq API Key**. The masked prompt stores it in VS Code SecretStorage.
 Never put a real key in this repository. Groq sends code context to its cloud API,
-so it does not demonstrate the local-only privacy design. The submitted demo uses Ollama.
+so the local-only privacy boundary applies specifically to Ollama mode.
 
 ## Tests
 
@@ -102,5 +102,4 @@ The model weights, API keys, local runtime and dependency caches are not include
 
 ## Presentation
 
-The final presentation is in `docs/VSHelper_VS_helper_Presentation.pptx` and the matching PDF.
-The demo video should be recorded with the student's own narration or photo and uploaded directly to Teams.
+The project presentation is available in [PowerPoint](https://github.com/Soorya-Ray/VS_helper/blob/main/docs/VSHelper_VS_helper_Presentation.pptx) and [PDF](https://github.com/Soorya-Ray/VS_helper/blob/main/docs/VSHelper_VS_helper_Presentation.pdf) format.
